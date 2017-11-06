@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-5 mx-auto">
+		<img src="img/logo.png" alt="" class="img-fluid">
+	</div>
+</div>
+<div class="row">
+	<div ng-repeat="address in user.address" class="col-md-6">
+		<user-address titles="['Meus endereços']" 
+					  model="address"
+					  disabled="!address.disabled"
+					  edit="getAddress(address)">
+	    </user-address>
+		<div class="row bg-dark">
+			<button type="button" class="btn mx-auto col-md-3 col-sm-3 rounded-0 button-edit btn-warning" 
+		  		ng-click="updateAddress(user);">Alterar</button>
+		</div>
+	</div>
+</div>

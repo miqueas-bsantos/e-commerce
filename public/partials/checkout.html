@@ -1,0 +1,87 @@
+<div class="row ">
+   	<div class="col-md-8 col-sm-12 mx-auto">
+	  	<div id="table-container" class="table box-shadow" ng-if="products.length">
+	  		<div class=" color-primary text-white px-3 py-2">
+	  			<h5 class="table-header-desc">
+	  				Minhas Beers <span class="text-right">SubTotal: {{subTotal | currency : 'R$' : 2}}</span>
+	  			</h5>
+	  		</div>
+			<div class="">
+				<input type="text" class="form-control rounded-0" placeholder="search for.." ng-model="search">
+			</div>
+			<div class="lines" ng-repeat="product in products | filter: search">
+			   	<div class="cols">
+			   		<b>{{product.name}}</b>
+				 	<img src="{{product.images[0]}}" width=60 class="img-circle">
+			   	</div>
+			   	<div class="cols">
+				 	<b>Descrição</b><br>
+				 	{{product.desc | limitTo: 50}}
+			    </div>
+			    <div class="cols">
+					<b>Valor</b><br>
+					{{(product.price * product.quantity) | currency : 'R$' : 2}}
+			    </div>
+			    <div class="cols">
+			    	<b>Quantidade</b>
+					<div class="input-group bg-white">
+						<span class="input-group-addon bg-white border-0">
+							<button class="btn btn-outline-success" ng-click="increment(product)">+</button>
+						</span>
+					  	<input ng-model="product.quantity" type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)" disabled>
+					  	<span class="input-group-addon bg-white border-0">
+					  		<button class="btn btn-outline-danger" ng-click="decrement(product)">-</button>
+					  	</span>
+					</div>
+			    </div>
+			</div>
+	   	</div>
+	   	<div class="alert alert-info" ng-if="!products.length">
+	   		Você não possui produtos no carrinho de compras ainda ;(
+	   	</div>
+	   	<div class="text-right">
+	   		<a href="/login" class="btn btn-success">Finalizar Pedido</a>
+	   	</div>
+   	</div>
+   	<div class="col-md-4 text-center">
+   		<div id="table-container" class="table box-shadow ">
+   			<div class=" color-primary text-white px-3 py-2">
+   				<h5>Meus Endereços</h5>
+   			</div>
+			<div class="lines" style="width: 100%">
+				<div class="cols px-5" style="vertical-align: middle;">
+					<input type="radio" aria-label="Checkbox for following text input">
+			   	</div>
+			    <div class="px-5 py-3 cols" style="width: 100%">
+			   		<b>Endereço</b>
+				 	<p>Rua antonio simão da costa, São Paulo, SP</p>
+					<b>CEP</b><br>
+					0484410 <br>
+					<b>Complemento</b><br>
+					Casa
+			   	</div>
+			</div>
+			<div class="lines py-2">
+			   <a href="#" class="btn btn-primary">Inserir novo endereço</a>
+			</div>
+	   	</div>
+	   	<div id="table-container" class="table box-shadow">
+   			<div class=" color-primary text-white px-3 py-2">
+   				<h5>Meus Dados</h5>
+   			</div>
+			<div class="lines" style="width: 100%">
+			    <div class="px-5 py-3" style="width: 100%">
+			   		<b>Nome</b><br>
+				 	Miqueas batista do santos <br>
+					<b>email</b><br>
+					Miqueas.bsantos@gmail.com <br>
+					<b>Nascimento</b><br>
+					21/04/1996
+			   	</div>
+			</div>
+			<div class="lines py-2">
+			   <a href="#" class="btn btn-primary">Alterar dados</a>
+			</div>
+	   	</div>
+   	</div>
+</div>
